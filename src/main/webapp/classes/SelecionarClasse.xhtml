@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Selecione uma classe</title>
+
+    </h:head>
+
+    <f:event type="preRenderView" listener="#{controlePIC.initConversation()}" />
+    <h:form class="ui-fluid">
+
+        <div>
+            <p:inputText id="nome" size="40" value="#{controlePIC.pic.className}" />
+            <p:commandButton value="pesquisar"  actionListener="#{controlePIC.pesquisar()}"  update="tblPic" >
+                <p:ajax update="tblPic" process="@this"  global="false" partialSubmit="true" />
+            </p:commandButton>
+        </div>
+
+        <div class="ui-fluid">
+            <p:dataTable id="tblPic" 
+                         var="pic" value="#{controlePIC.listaPicFiltrada}" 
+                         rows="10" 
+                         resizableColumns="true"
+                         paginator="true" class="ui-fluid"  style="font-size: medium;"
+                         resizeMode="true"
+                         
+                         >
+                <p:column headerText="Classe:" style="white-space: normal; word-break: break-all">
+                    <a href="">
+                        <h:outputText value="#{pic.className}"  style="font-size: small"   />
+                    </a>
+
+                </p:column>
+
+                <p:column headerText="Rótulo:"  style="white-space: normal; word-break: break-all">
+                    <h:outputText value="#{pic.label}" />
+                </p:column>
+
+                <p:column headerText="Comentário/Descrição:" style="white-space: normal; word-break: break-all" >
+                    <h:outputText value="#{pic.comment}" />
+                </p:column>
+
+                <p:column headerText="Filha de:" style="white-space: normal; word-break: break-all">
+                    <h:outputText value="#{pic.subClassOf}" />
+                </p:column>
+                <p:column headerText="Selecionar">
+                    <p:commandButton title="selecionar"  action="#{controlePIC.selecionarClasse(pic)}" 
+                                     />
+
+                </p:column>
+
+            </p:dataTable>
+
+
+
+
+        </div>
+
+    </h:form>
+
+</html>

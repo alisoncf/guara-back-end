@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://200.137.241.247:8080/fuseki/dimensoes#"
+     xml:base="http://200.137.241.247:8080/fuseki/dimensoes"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://200.137.241.247:8080/fuseki/dimensoes"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#relacionaEspaço -->
+
+    <owl:ObjectProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#relacionaEspaço">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Espaço"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#relacionaFenômeno -->
+
+    <owl:ObjectProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#relacionaFenômeno">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Fenômeno"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#relacionaPessoa -->
+
+    <owl:ObjectProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#relacionaPessoa">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Pessoa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#relacionaTempo -->
+
+    <owl:ObjectProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#relacionaTempo">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Tempo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#tipoDimensional -->
+
+    <owl:ObjectProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#tipoDimensional">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Espaço"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Fenômeno"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Pessoa"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Tempo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#tipoFisico -->
+
+    <owl:ObjectProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#tipoFisico">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Arqueológico"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#Documental"/>
+        <rdfs:range rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ImagemSom"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/relation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/relation"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#subClassOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#relacionaTempo -->
+
+    <owl:DatatypeProperty rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#relacionaTempo">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTimeStamp"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Arqueológico -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Arqueológico">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Bibliotecário -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Bibliotecário">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Documental -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Documental">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Espaço -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Espaço">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoDimensional"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Fenômeno -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Fenômeno">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoDimensional"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#ImagemSom -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#ImagemSom">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Museológico -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Museológico">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#ObjetoDimensional -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoDimensional"/>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoFisico"/>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Pessoa -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Pessoa">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoDimensional"/>
+    </owl:Class>
+    
+
+
+    <!-- http://200.137.241.247:8080/fuseki/dimensoes#Tempo -->
+
+    <owl:Class rdf:about="http://200.137.241.247:8080/fuseki/dimensoes#Tempo">
+        <rdfs:subClassOf rdf:resource="http://200.137.241.247:8080/fuseki/dimensoes#ObjetoDimensional"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="head">
+            Administrar Repositório
+        </ui:define>
+        <ui:define name="body">
+            <h:body>
+                <h:form id="pane1" rendered="true">
+
+                    <p:panel>
+                        <f:event type="preRenderView" listener="#{admRepositorio.listaRepo}"/>
+
+                        <div class="card">
+                            <div class="ui-fluid">
+                                <div class="p-field p-grid">
+                                    <p:dataTable
+                                        id="tabela" var="repo" value="#{admRepositorio.listRepo}" 
+                                        rows="15" 
+                                        paginator="true"
+                                        paginatorAlwaysVisible="false" paginatorPosition="bottom" 
+                                        style="font-size: small"   >
+
+                                        <p:column headerText="URI" >
+                                            <h:outputText value="#{repo.uri}" />
+                                        </p:column>
+                                        <p:column headerText="nome" >
+                                            <h:outputText value="#{repo.nome}" />
+                                        </p:column>
+                                        <p:column headerText="contato" >
+                                            <h:outputText value="#{repo.contato}" />
+                                        </p:column>
+                                        <p:column headerText="descrição" >
+                                            <h:outputText value="#{repo.descricao}" />
+                                        </p:column>
+
+                                    </p:dataTable>
+                                </div>
+
+
+
+
+
+                            </div>
+
+                            <p:spacer height="20px"/>
+
+
+                            <p:commandButton value="Gravar" action="#{admRepositorio.buscaRepo()}" process="pane1" />
+                            <p:commandButton value="Voltar" />
+
+
+                        </div>
+
+                    </p:panel>
+
+
+
+
+
+
+                </h:form>
+            </h:body>
+        </ui:define>
+
+
+    </ui:composition>
+</html>
+

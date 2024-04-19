@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <h:outputStylesheet library="webjars"
+                            name="font-awesome/5.15.4/js/all.js" />
+
+        <title>Guará | RDF Semantic System </title>
+    </h:head>
+
+    <h:body>
+
+        <h:form>
+            <p:growl  >
+
+            </p:growl>
+
+
+            <p:panel style="border-style: hidden; background: #dddddd ; height: 70px" >
+                <a href="/index.xhtml">
+                    <p:graphicImage library="img" name="cmg.gif" width="120px" style="position: absolute; top: 1px; left: -15px"
+                                    />
+                </a>
+
+                <div style="position: absolute; left: 90px">
+                    Guará <br/>
+                    RDF Engine | Objetos Digitais Semânticos
+                </div>
+
+                <a href="index.xhtml">
+                    <p:graphicImage library="img" name="guara.png" width="20px" style="position: absolute; top:10px; left: 140px"
+                                    />
+                </a>
+
+
+            </p:panel>
+
+
+
+            <p:menubar>
+
+                <p:submenu label="Objetos Digitais" icon="">
+                    
+                    <p:submenu label="Objetos Físicos" icon="fa fa-circle-o">
+                        <p:menuitem value="Pesquisar" outcome="/objetos/listarObjetos" icon="fa fa-search"/>
+                        <p:menuitem value="Criar Novo" outcome="/objetos/CriarObjeto" icon="fa fa-camera"/>
+                    </p:submenu>
+                    <p:submenu label="Objetos Dimensionais" icon="fa fa-circle">
+                        <p:menuitem value="Pesquisar" outcome="/objetos/listarObjetosDim" icon="fa fa-search"/>
+                        <p:menuitem value="Criar Novo" outcome="/objetos/CriarObjetoDim" icon="fa fa-cube"/>
+
+                    </p:submenu>
+
+                    
+                    
+
+                </p:submenu>
+
+
+                <p:submenu label="Navegar" icon="">
+                    <p:menuitem value="Coleções" url=""
+                                icon="ui-icon-extlink" />
+
+                </p:submenu>
+                <p:submenu label="Dimensões" icon="">
+                    <p:menuitem value="Pessoas" url=""
+                                icon="fa fa-group" />
+                    <p:menuitem value="Espaços" url=""
+                                icon="fa fa-map-marker" />
+
+                    <p:menuitem value="Fenômenos" url=""
+                                icon="fa fa-sun-o" />
+
+                    <p:menuitem value="Tempo" url=""
+                                icon="fa fa-hourglass" />
+
+
+                </p:submenu>
+                <p:submenu label="Ontologias" icon="fa fa-navicon">
+                    <p:submenu label="Inicial" icon="fa fa-navicon">
+                        <p:menuitem value="Definições de Classes" url="/resources/ontologies/classes.owl"
+                                    icon="ui-icon-extlink" />
+                        <p:menuitem value="Definições de Objetos" url="/resources/ontologies/objetos.owl"
+                                    icon="ui-icon-extlink" />
+
+                        <p:menuitem value="Dimensões" url="/resources/ontologies/dimensoes.owl"
+                                    icon="ui-icon-extlink" />
+
+                    </p:submenu>
+                    <p:menuitem value="Classes" outcome="/classes/ListarClasses"
+                                icon="ui-icon-extlink" />
+                    <p:menuitem value="Nova Classe" outcome="/classes/NovaClasse.xhtml"
+                                icon="ui-icon-extlink" />
+
+                </p:submenu>
+
+                <p:submenu label="Adm" icon="ui-icon-extlink">
+                    <p:menuitem value="Repositório" url="/adm/DadosRepositorio.xhtml"
+                                icon="ui-icon-extlink" />
+                    <p:menuitem value="Amigos" url="/adm/RepositoriosAmigos.xhtml"
+                                icon="ui-icon-extlink" />
+
+
+                </p:submenu>
+
+            </p:menubar>
+
+        </h:form>
+
+        <p:spacer height="5px" />
+
+        <h:panelGroup layout="block">
+            <h2>
+                <ui:insert name="head" />
+            </h2>
+
+            <ui:insert name="body" class="fa-xs" />
+        </h:panelGroup>
+    </h:body>
+</html>

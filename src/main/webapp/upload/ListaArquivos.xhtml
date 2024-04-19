@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/templates/layout.xhtml">
+        <ui:define name="head">
+            Lista de Arquivos
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form>
+                <p:growl showDetail="true"  />
+
+
+
+                <p:spacer height="20px" />
+
+                <p:dataTable value="#{listaArquivosBean.arquivos}" var="file"
+                             id="dataTable">
+                    <f:facet name="header">
+                        Arquivos
+                    </f:facet>
+                    <p:column width="200">
+                        <p:commandButton immediate="true" value="Baixar" ajax="false"
+                                         actionListener="#{descarregadorBean.descarregar(file)}"
+                                         icon="ui-icon-arrowthick-1-s">
+                            <p:fileDownload value="#{descarregadorBean.streamedContent}"  />
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{file.name}" />
+                    </p:column>
+                    <p:column headerText="Caminho">
+                        <h:outputText value="#{file.absolutePath}"  />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

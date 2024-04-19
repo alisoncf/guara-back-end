@@ -1,0 +1,156 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23/04/2020, 18:30:17
+    Author     : cgpre
+*/
+div{
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
+}
+
+.imagens{
+    width: 400px;
+    height: 500px;
+    background-color: bisque;
+    top: 40px;
+    /*border: 1px solid black;*/
+
+}
+.leftcontrolesform
+{
+
+    left: 2%;
+    top: 12%;
+    position: fixed;
+    background: aliceblue;
+
+}
+.captionform{
+    position: fixed;
+    left: 1%;
+    top: 0%;
+
+}
+.topBanner{
+    width: 90%;
+    height: 10%;
+    background-color: aliceblue;
+    /*border: 0.5px solid black;*/
+    position: fixed;
+    left: 1%;
+    top:1%;
+}
+.topBanner2{
+    width: 60%;
+    height: 10%;
+    background-color: aliceblue;
+    /*border: 0.5px solid black;*/
+    position: fixed;
+    left: 1%;
+    top:1%;
+}
+.menufont{
+    position: fixed;
+    top: 0.5%;
+    left: 8%;
+    font-family:  "Arial" ;
+    font-size: 18px;
+    /*font-weight: bold;*/
+
+}
+.bottomfont{
+    /*position: fixed;*/
+    top: 2%;
+    left: 5%;
+    font-family:  "Arial" ;
+    font-size: 11px;
+    /*font-weight: bold;*/
+
+}
+.menuLogo{
+    position: fixed;
+    left: 1%;
+    width: 7%;
+
+}
+.bottomBanner{
+    width: 90%;
+    height: 5%;
+    background-color: antiquewhite;
+    /*border: 2px solid black;*/
+    position: fixed;
+    left: 1%;
+    top:92%;
+}
+.conteudoBanner{
+    width: 77%;
+    height: 79%;
+    background-color: aliceblue;
+    /*border: 2px solid black;*/
+    position: fixed;
+    left: 14%;
+    top:12%;
+}
+.menu{
+    width: 12%;
+    height: 40%;
+    background-color: aliceblue;
+    /*border: 2px solid black;*/
+    position: fixed;
+    left: 1%;
+    top:12%;
+}
+.form{
+    width: 60%;
+    height: 40%;
+    background-color: #ccccff;
+   
+    /*border: 1px solid black;*/
+    position: fixed;
+    left:1%;
+    top:12%;
+
+
+}
+.divArq{
+    width: 400px;
+    height: 50px;
+    background-color: #ccccff;
+    top: 1px;
+    border: 1px solid black; 
+
+}
+.divDados{
+    width: 600px;
+    height: 550px;
+    background-color: beige;
+    top: 60px; 
+    left: 420px;
+    border: 1px solid black; 
+    position: fixed;
+
+}
+.esquerda{
+    left: 10px;
+}
+.img1{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+}
+.bt {
+border:1px solid #25692A;
+border-radius:4px;
+display:inline-block;
+cursor:pointer;
+font-family:Verdana;
+font-weight:bold;
+font-size:13px;
+padding:6px 10px;
+text-decoration:none;
+}

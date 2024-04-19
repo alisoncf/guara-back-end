@@ -1,0 +1,30 @@
+table{
+   border: 1px black solid;
+   border-collapse: collapse;
+   width: 100%;
+}
+
+td{
+    border: 1px black solid ;
+    
+}
+tr{
+    border: 1px black solid ;
+    
+}
+
+.frmPesquisa{
+    width: 80%;
+    height:  80%;
+    top: 10%;
+    position: absolute;
+    background-color: aliceblue;
+}
+.captionfrmPesquisa{
+    top: 1%;
+    width: 80%;
+    height:  8%;
+    position: absolute;
+    background-color: aliceblue;
+    font-size: medium;
+}

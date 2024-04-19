@@ -1,0 +1,15 @@
+
+
+
+
+.botao  {
+    position:absolute;
+
+    left:6%;
+    width: 80%;
+    height: 16%;
+   
+    .botao1{
+        top: 15%;
+    }
+}
