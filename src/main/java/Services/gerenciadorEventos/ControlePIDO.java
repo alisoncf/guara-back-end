@@ -92,7 +92,9 @@ public class ControlePIDO implements Serializable {
         mediaTypes = new ArrayList<>();
         mediaTypes.add("Arquelógico");
         mediaTypes.add("Documental");
-        mediaTypes.add("ImagemSom");
+        mediaTypes.add("Imagem&Som");
+        mediaTypes.add("Bibliotecário");
+        mediaTypes.add("Museulógico");
 
     }
 

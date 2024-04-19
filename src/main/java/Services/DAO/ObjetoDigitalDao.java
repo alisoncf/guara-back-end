@@ -10,6 +10,7 @@ import Entidades.PIC;
 import Entidades.PIDO;
 import Entidades.PropVal;
 import Entidades.Propriedade;
+import Entidades.Raw3;
 import Entidades.TriplaSimples;
 import Entidades.Valor;
 import java.io.Serializable;
@@ -197,10 +198,10 @@ public class ObjetoDigitalDao implements Serializable {
                 + " WHERE{ "
                 + "<" + this.objeto.getUri().toString() + "> "
                 + "" + relacao + " "
-                +   "?objeto. "
+                + "?objeto. "
                 + "<" + this.objeto.getUri().toString() + "> "
                 + " a "
-                +   "dim:ObjetoFisico. }";
+                + "dim:ObjetoFisico. }";
         return sql;
     }
 
@@ -234,6 +235,43 @@ public class ObjetoDigitalDao implements Serializable {
 
     private String getDSPadrao() {
         return TDBUtil.getTDBObjeto();
+    }
+
+    public List<Raw3> getListaRaw3(String sql, String ds)   {
+
+        if (sql == "") {
+            sql = getSparqlPadrao("");
+        }
+        if (ds == "") {
+            ds = getDSPadrao();
+        }
+        List<Raw3> list = new ArrayList();
+
+        ConexaoTDBRemota con = new ConexaoTDBRemota(ds);
+//        sql = "SELECT * WHERE {?s ?p ?o} limit 10";
+        
+        try {
+            ResultSet rs = con.getResultset(sql);
+            while (rs.next()) {
+                Raw3 obj = new Raw3();
+                obj.setSubject(rs.getString(1));
+                obj.setProperty(rs.getString(2));
+                obj.setObject(rs.getString(3));
+                
+                
+
+                list.add(obj);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            Logger.getLogger(ObjetoDigitalDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(ObjetoDigitalDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
     }
 
     public List<ObjetoDigital> getListObjDigital(String sql, String ds) throws Exception {

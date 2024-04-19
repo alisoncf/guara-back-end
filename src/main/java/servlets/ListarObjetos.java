@@ -1,4 +1,4 @@
-                                                            /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,6 +6,7 @@
 package servlets;
 
 import Entidades.ObjetoDigital;
+import Entidades.Raw3;
 import Services.DAO.ObjetoDigitalDao;
 import html.gen.HTMLUtil;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Services.persistence.TDBUtil;
+import com.google.gson.Gson;
 
 /**
  *
@@ -31,23 +33,13 @@ public class ListarObjetos extends HttpServlet {
     private String kw = "";
     private String tabela;
     private String colecao;
+    private String type = "text/html";
+    List<ObjetoDigital> list = new ArrayList();
+    List<Raw3> listRaw = new ArrayList<>();
 
-    private void pesquisar() throws Exception {
-        if (this.kw == null) {
-            this.kw = "";
-        }
-        String sql = "prefix owl: <http://www.w3.org/2002/07/owl#>\n"
-                + "PREFIX dc: <http://purl.org/dc/elements/1.1/>\n"
-                + "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
-                + "SELECT DISTINCT ?s  ?v ?o"
-                + "WHERE{?s dc:title ?v.\n"
-                + " ?o rdfs:type ?x "
-                + " filter (regex(?s,\"" + this.kw + "\",\"i\")||regex(?v,\""
-                + this.kw + "\",\"i\") )"
-                + "}";
-
-        List<ObjetoDigital> list = new ArrayList();
-        list = new ObjetoDigitalDao().getListObjDigital(sql, TDBUtil.getTDBObjeto());
+    private String RetornoHTML(ArrayList<ObjetoDigital> list) {
+        String retorno = "";
+        String html = "";
         tabela = "<div   style=\"overflow-x:auto; >\n"
                 + "<table><tr><th>Objeto</th><th>Título</th><th>Tipo</th><th>Editar</th></tr>";
         for (int i = 0; i < list.size(); i++) {
@@ -60,6 +52,52 @@ public class ListarObjetos extends HttpServlet {
                     + "</tr>\n";
         }
         tabela = tabela + "</table></div>";
+
+        String style = "<style>\n"
+                + "table {\n"
+                + "  border-collapse: collapse;\n"
+                + "  width: 100%;\n"
+                + "}\n"
+                + "\n"
+                + "th, td {\n"
+                + "  text-align: left;\n"
+                + "  padding: 8px;\n"
+                + "}\n"
+                + "\n"
+                + "tr:nth-child(even) {background-color: #f2f2f2;}\n"
+                + "</style>";
+
+        html = "<!DOCTYPE html>"
+                + "<html>"
+                + "<head>"
+                + "<link rel=\"stylesheet\" href=\"/resources/css/tabela.css\">"
+                + "<link rel=\"stylesheet\" href=\"/resources/css/estilo.css\">"
+                + "<script src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js\"></script>"
+                + "<title>Pesquisar por Tipo de Objeto</title>"
+                + "</head>"
+                + "<body ng-app=\"\">"
+                + "<div class=\"captionfrmPesquisa\"><h3>Pesquisar</h3></div>"
+                + tabela
+                + "</body>"
+                + "</html>";
+
+        return retorno;
+    }
+
+    
+    
+    private void pesquisar() throws Exception {
+        String sql = "prefix owl: <http://www.w3.org/2002/07/owl#>\n"
+                + "PREFIX dc: <http://purl.org/dc/elements/1.1/>\n"
+                + "prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
+                + "SELECT DISTINCT ?s  ?v ?o "
+                + " WHERE{?s ?v ?o.\n"
+                + " filter (regex(?s,\"" + this.kw + "\",\"i\")||regex(?v,\""
+                + this.kw + "\",\"i\") || regex(?o,\"" + this.kw + "\",\"i\"))"
+                + "} limit 1000";
+        
+        listRaw = new ObjetoDigitalDao().getListaRaw3(sql, "");
+
     }
 
     private String ConstroiHTMLRetorno() {
@@ -71,42 +109,19 @@ public class ListarObjetos extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-        response.setContentType("text/html;charset=UTF-8");
-        this.kw = request.getParameter(kw);
+        
+        this.kw = request.getParameter("kw");
+        String t = request.getParameter("type");
+        if (t != null) {
+            this.type = t;
+        }
+        
         pesquisar();
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-
-            String style = "<style>\n"
-                    + "table {\n"
-                    + "  border-collapse: collapse;\n"
-                    + "  width: 100%;\n"
-                    + "}\n"
-                    + "\n"
-                    + "th, td {\n"
-                    + "  text-align: left;\n"
-                    + "  padding: 8px;\n"
-                    + "}\n"
-                    + "\n"
-                    + "tr:nth-child(even) {background-color: #f2f2f2;}\n"
-                    + "</style>";
-
-            out.println("<link rel=\"stylesheet\" href=\"/resources/css/tabela.css\">");
-            out.println("<link rel=\"stylesheet\" href=\"/resources/css/estilo.css\">");
-            out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js\"></script>");
-            out.println("<title>Pesquisar por Tipo de Objeto</title>");
-            out.println("</head>");
-            out.println("<body ng-app=\"\">");
-
-            out.println("<div class=\"captionfrmPesquisa\"><h3>Pesquisar</h3></div>");
-
-            out.println(tabela);
-
-            out.println("</body>");
-            out.println("</html>");
+        try (PrintWriter out = response.getWriter()) {
+            response.setContentType("text/json");
+            String ret = new Gson().toJson(listRaw);
+            out.print(ret);
+            
         }
     }
 
